@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" style="-fx-background-color: #61a2b1" fx:controller="ua.pr.moxa.controller.ControllerMainFRM">
+	<center>
+		<GridPane alignment="center" hgap="10" vgap="10">
+			<padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+			
+			<HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="0">
+				<children>
+					<Label prefWidth="90" prefHeight="20" text="Host name[:port]"
+							alignment="CENTER_RIGHT"/>
+					<TextField fx:id="address" text="10.1.3.220" prefWidth="190" prefHeight="20" alignment="CENTER_LEFT"/>
+				</children>
+			</HBox>
+
+			<HBox spacing="10" GridPane.columnIndex="0" GridPane.rowIndex="1">
+				<children>
+					<Label prefWidth="90" prefHeight="20" text="User"
+							alignment="CENTER_RIGHT"/>
+					<TextField fx:id="user" text="root" prefWidth="50" prefHeight="20" alignment="CENTER_LEFT"/>
+
+					<Label prefWidth="70" prefHeight="20" text="Password"
+							alignment="CENTER_RIGHT"/>
+					<TextField fx:id="password" text="root" prefWidth="50" prefHeight="20" alignment="CENTER_LEFT"/>
+				</children>
+			</HBox>
+			
+			<HBox spacing="10" GridPane.rowIndex="2" GridPane.columnIndex="0">
+				<children>
+					<Label prefWidth="90" prefHeight="20" text="Remoute dir" alignment="CENTER_RIGHT"/>
+					<ComboBox fx:id="remDir" layoutX="15.0" layoutY="30.0" prefWidth="90">
+						<items>
+							<FXCollections fx:factory="observableArrayList">
+								<String fx:value="database" />
+								<String fx:value="log" />
+								<String fx:value="./" />
+								</FXCollections>
+						</items>
+						<value>
+							<String fx:value="log" />
+						</value>
+					</ComboBox>
+					<Label prefWidth="40" prefHeight="20" text="MASK"/>
+					<TextField fx:id="mask" prefWidth="40" prefHeight="20" text="*.*" alignment="center"/>
+				</children>
+			</HBox>
+			
+			<HBox spacing="10" GridPane.rowIndex="3" GridPane.columnIndex="0">
+				<children>		
+					<Label prefWidth="90" prefHeight="20" text="Local dir" alignment="CENTER_RIGHT"/>
+					<TextField fx:id="locDir" text="c:/temp" prefWidth="190" prefHeight="20" alignment="CENTER_LEFT"/>
+				</children>
+			</HBox>
+			
+			<Separator GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+				
+			<HBox spacing="10" alignment="center" GridPane.rowIndex="5" GridPane.columnIndex="0">
+				<children>
+					<Button prefWidth="100" text="Get" onAction="#getFiles"/>
+					<Button prefWidth="100" text="Put" onAction="#putFiles"/>
+				</children>
+			</HBox>
+		</GridPane>
+	</center>
+	
+	<bottom>
+		<ToolBar>
+			<ProgressBar fx:id="progressBar" progress="0.0" prefWidth="100"/>
+			<Text fx:id="timerS" text="   status" textAlignment="center"/>
+			<Separator/>
+			<Text fx:id="fileName" text=" - " textAlignment="center"/>
+			<Separator/>
+			<Text fx:id="progressBytes" text=" - " textAlignment="center"/>
+		</ToolBar>
+	</bottom>
+</BorderPane>

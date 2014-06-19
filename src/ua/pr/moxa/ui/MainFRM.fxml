@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+
+<BorderPane fx:controller="ua.pr.moxa.controller.ControllerMainFRM" xmlns:fx="http://javafx.com/fxml" styleClass="root">
+	<center>
+		<GridPane  alignment="center" hgap="10" vgap="10">
+
+		    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding> 
+
+		    <Label text="IP address" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+			<Label text="Port" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+			<Label text="User" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+			<Label text="Password" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+
+			<!--TextField fx:id="address" prefWidth="75" text="193.254.232.107" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+			<TextField fx:id="port" prefWidth="50" text="21015" GridPane.columnIndex="1" GridPane.rowIndex="1"/-->
+			<TextField fx:id="address" prefWidth="75" text="10.10.10.16" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+			<TextField fx:id="port" prefWidth="50" text="22" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+			<TextField fx:id="user" prefWidth="50" text="root" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+			<TextField fx:id="password" prefWidth="50" text="root" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+
+			<Label text="Remoute dir" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+			<ComboBox fx:id="remDir" prefWidth="50" GridPane.columnIndex="1" GridPane.rowIndex="2">
+				<items>
+			        <FXCollections fx:factory="observableArrayList">
+			            <String fx:value="database" />
+			            <String fx:value="log" />
+			        </FXCollections>
+			    </items>
+			    <value>
+			        <String fx:value="log" />
+			    </value>
+			</ComboBox>
+			<Label text="MASK" prefWidth="50" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
+			<TextField fx:id="mask" prefWidth="50" text="*.gz" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+
+			<Label text="Local dir" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+			<TextField fx:id="locDir" prefWidth="50" text="c:/Downloads/temp" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			<Button text="GET" GridPane.columnIndex="2" GridPane.rowIndex="3" onAction="#getFiles"/>
+			<Button text="PUT" GridPane.columnIndex="3" GridPane.rowIndex="3"/>
+
+			<Label text="File name" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+			<Text fx:id="fileName" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+			<Text fx:id="progressBytes" text="-" GridPane.columnIndex="2" GridPane.rowIndex="4"/>
+			<Label text="Bytes" GridPane.columnIndex="3" GridPane.rowIndex="4"/>
+
+			<stylesheets>
+				<URL value="@MainFRM.css" />
+			</stylesheets>
+
+		</GridPane>
+	</center>
+
+	<bottom>
+		<ToolBar>
+			<ProgressBar fx:id="progressBar" progress="0.0" prefWidth="100"/>
+			<Text fx:id="timerS" text="0" />
+		</ToolBar>
+	</bottom>
+</BorderPane>
